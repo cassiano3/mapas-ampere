@@ -1,7 +1,3 @@
-""" script que baixa os mapas diarios que vao pro telegram
-toda vez que roda isso, ele ve quais mapas ja baixamos, e tenta baixar os que faltam
-a tarefa TELEGRAM do jarvis faz uso desses mapas
-"""
 import os
 import time
 import json
@@ -11,6 +7,8 @@ import datetime
 import pandas as pd
 
 from logpy import uniao, tools as tl
+from params import PATH_CREDENCIAIS, MODELOS_DE_INTERESSE, PASTA_DOWNLOAD
+
 
 def baixar_comparativo(modelo,prev1,prev2,periodo,filenames,tokens):
     """ modelo = str
@@ -20,7 +18,7 @@ def baixar_comparativo(modelo,prev1,prev2,periodo,filenames,tokens):
         tokens = {'x-access-token':valor,'meteorologia': valor}
     """
     # credenciais
-    path_credenciais = os.path.join(uniao.getvault(),"API_Ampere","cred","userapi.txt")
+    path_credenciais = os.path.join(PATH_CREDENCIAIS)
     credenciais = pd.read_csv(path_credenciais,header=None,sep=";")
     user = credenciais.iloc[0,1]
     hash_senha = credenciais.iloc[1,1]
@@ -78,8 +76,8 @@ def baixar_comparativo(modelo,prev1,prev2,periodo,filenames,tokens):
     db.db_commit()
     db.db_close()
 
-BAIXAR_MODELOS = ['nprevc','gefs','ecmwfens','ampere','gem']
-LOCAL_DOWNLOAD = '/home/ubuntu/C:/Testando/ampere/mapas2'
+BAIXAR_MODELOS = MODELOS_DE_INTERESSE
+LOCAL_DOWNLOAD = PASTA_DOWNLOAD
 
 if not os.path.exists(LOCAL_DOWNLOAD):
     os.mkdir(LOCAL_DOWNLOAD)

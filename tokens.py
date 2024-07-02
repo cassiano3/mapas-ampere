@@ -6,12 +6,13 @@ import datetime
 import pandas as pd
 
 from logpy import uniao, tools as tl
+from params import PATH_CREDENCIAIS
 
 # horario de parada diario (hora,minuto)
 stop_time = (23,0)
 
 # credenciais fixas
-path_credenciais = os.path.join(uniao.getvault(),"API_Ampere","cred","userapi.txt")
+path_credenciais = os.path.join(PATH_CREDENCIAIS)
 credenciais = pd.read_csv(path_credenciais,header=None,sep=";")
 user = credenciais.iloc[0,1]
 hash_senha = credenciais.iloc[1,1]
