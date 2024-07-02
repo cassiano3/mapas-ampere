@@ -3,4 +3,4 @@ PATH_CREDENCIAIS = '/home/ubuntu/C:/Log/OneDrive - GALAPAGOS CAPITAL/0.VAULT/API
 
 MODELOS_DE_INTERESSE = ['nprevc','gefs','ecmwfens','ampere','gem']
 
-LOCAL_DOWNLOAD = '/home/ubuntu/C:/Testando/ampere/mapas2'
+PASTA_DOWNLOAD = '/home/ubuntu/C:/Testando/ampere/mapas2'
